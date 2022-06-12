@@ -155,7 +155,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Mother, function (sprite, ot
         bbbbbbbbbbbbbbbbbbbbbdbbbbbbbbbbbbbbbbbbbbbdbbbbbbbbbbbbbbbbbbbbbbdbbbbbbbbbbbbbbbbbbbbbfcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccff
         bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
         `)
-    if (info.score() > 12) {
+    if (info.score() > 25) {
         branch.sayText("YGG Evolution Completed!")
         game.over(true, effects.slash)
     }
@@ -314,12 +314,12 @@ branch = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
     . . . . . . . 4 4 . . . . . . . 
-    . . . . . . 4 5 5 4 . . . . . . 
-    . . . . . . 2 5 5 2 . . . . . . 
+    . . . . . . . 4 4 . . . . . . . 
+    . . . . . 4 4 5 5 4 4 . . . . . 
+    . . . . . 2 2 5 5 2 2 . . . . . 
     . . . . . . . 2 2 . . . . . . . 
-    . . . . . . . . . . . . . . . . 
+    . . . . . . . 2 2 . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -569,7 +569,7 @@ Mother_board.setPosition(155, 40)
 Mother_board2.setPosition(155, 90)
 info.setScore(0)
 info.setLife(5)
-info.startCountdown(60)
+info.startCountdown(180)
 branch.setPosition(25, 20)
 let circuit = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -589,6 +589,9 @@ let circuit = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Enemy)
+let textSprite = textsprite.create("HS " + convertToText(info.highScore()))
+textSprite.setBorder(1, 6)
+textSprite.setPosition(117, 4)
 game.onUpdate(function () {
     recharge.value = game.runtime() - last_shot
 })
